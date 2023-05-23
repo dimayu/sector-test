@@ -1,0 +1,15 @@
+@import "../../baseStyles/variables";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $grey;
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $black;
+  scroll-behavior: smooth;
+}
