@@ -20,7 +20,7 @@ export const Header = () => {
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
-            <h1 className="h4 px-2 m-0">Mira soft</h1>
+            <h1 className="h4 px-2 m-0">Mitra soft</h1>
           </NavLink>
           <Button variant="outline-secondary navbar-toggler-icon p-2"
                   size="lg"

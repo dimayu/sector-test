@@ -1,0 +1,15 @@
+.post {
+  &__title, &__text {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__img {
+    &:hover {
+      img {
+        opacity: .6;
+      }
+    }
+  }
+}
