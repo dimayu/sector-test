@@ -62,7 +62,8 @@ export const Posts = () => {
   
   return (
     <>
-      <div className="form flex-xs-row d-flex justify-content-center justify-content-xs-between align-items-center align-items-xs-end flex-column">
+      <div className="form flex-xs-row d-flex
+      justify-content-center justify-content-xs-between align-items-center align-items-xs-end flex-column">
         <Search value={searchHandler}/>
         <Sort value={sortHandler}/>
       </div>
