@@ -9,6 +9,7 @@ const comments = (state = initialState, {type, payload}) => {
   switch (type) {
     case SET_COMMENTS:
       return {
+        ...state,
         comments: [...payload],
         loaded: true,
       };

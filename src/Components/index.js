@@ -8,3 +8,5 @@ export * from './Comment';
 export * from './Pagination';
 export * from './Search';
 export * from './Sort';
+export * from './User';
+export * from './UserPost';

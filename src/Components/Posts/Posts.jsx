@@ -17,6 +17,8 @@ export const Posts = () => {
   const [value, setValue] = useState('');
   const [sort, setSort] = useState(false);
   
+  const [setUserId] = useState('');
+  
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
@@ -55,6 +57,8 @@ export const Posts = () => {
   const searchHandler = (value) => setValue(value);
   const sortHandler = (value) => setSort(value);
   
+  const userIdHandle = (id) => setUserId(id);
+  
   return (
     <>
       <div className="d-flex justify-content-between align-items-end">
@@ -64,7 +68,7 @@ export const Posts = () => {
       <Row className="posts my-4 mx-0">
         {
           loaded ? currentPosts.map((item, index) => (
-            <Post post={item} key={index}/>
+            <Post post={item} key={index} userId={userIdHandle} link={true}/>
           )) : <Spinner animation="border" role="status" className="mx-auto" size="xl">
             <span className="visually-hidden">Loading...</span>
           </Spinner>

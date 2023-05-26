@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Col, Button, Collapse, Spinner, ListGroup } from 'react-bootstrap';
 
 import { getComments } from '../../Redux/Actions/ActionCreator';
@@ -7,20 +8,20 @@ import { Comment } from '../Comment';
 
 import './Post.scss';
 
-export const Post = ({post}) => {
+export const Post = ({ post, link }) => {
   const [open, setOpen] = useState(false);
   
   const comments = useSelector(store => store?.comments?.comments);
   const loaded = useSelector(store => store?.comments?.loaded);
   const dispatch = useDispatch();
   
-  const handleClick = async (id) => {
+  const id = post.userId;
+  
+  const handleClick = (id) => {
     setOpen(!open);
     if (comments.length === 0) {
       dispatch(getComments(id));
     }
-    console.log(id);
-    console.log(post.id);
   }
   
   return (
@@ -29,9 +30,13 @@ export const Post = ({post}) => {
         {post.title}
       </h3>
       <p className="post__text">{post.body}</p>
-      <a href="#" className="post__img w-25">
-        <img src="/img/photo.svg" alt="user" width="50px" height="50px"/>
-      </a>
+      {
+        link ? <Link to={`users/${id}`} className="post__img w-25">
+          <img src="/img/photo.svg" alt="user" width="50px" height="50px"/>
+        </Link>
+          :
+            <img src="/img/photo.svg" alt="user" width="50px" height="50px"/>
+      }
       <Button variant="outline-secondary mx-4"
               size="sm"
               onClick={() => handleClick(post.id)}

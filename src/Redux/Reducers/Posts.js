@@ -9,6 +9,7 @@ const posts = (state = initialState, {type, payload}) => {
   switch (type) {
     case SET_POSTS:
       return {
+        ...state,
         posts: [...payload],
         loaded: true,
       };

@@ -9,7 +9,8 @@ const user = (state = initialState, {type, payload}) => {
   switch (type) {
     case SET_USER:
       return {
-        user: [...payload],
+        ...state,
+        user: payload,
         loaded: true,
       };
     default: return state;

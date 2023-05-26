@@ -12,7 +12,12 @@ export const getComments = async () => {
   return await res;
 };
 
-export const getUser = async (id) => {
-  const res = await axios.get(`users/${id}`);
+export const getUser = async (userId) => {
+  const res = await axios.get(`users/${userId}`);
+  return await res;
+};
+
+export const getUserPosts = async (id) => {
+  const res = await axios.get(`posts?userId=${id}`);
   return await res;
 };
