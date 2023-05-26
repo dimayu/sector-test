@@ -10,6 +10,7 @@ import './Posts.scss';
 export const Posts = () => {
   const posts = useSelector(store => store?.posts?.posts);
   const loaded = useSelector(store => store?.posts?.loaded);
+  const postsError = useSelector(store => store?.errors.postsError);
   const dispatch = useDispatch();
   
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +18,7 @@ export const Posts = () => {
   const [value, setValue] = useState('');
   const [sort, setSort] = useState(false);
   
-  const [setUserId] = useState('');
+  const [userId, setUserId] = useState('');
   
   useEffect(() => {
     dispatch(getPosts());
@@ -65,21 +66,27 @@ export const Posts = () => {
         <Search value={searchHandler}/>
         <Sort value={sortHandler}/>
       </div>
-      <Row className="posts my-4 mx-0">
-        {
-          loaded ? currentPosts.map((item, index) => (
-            <Post post={item} key={index} userId={userIdHandle} link={true}/>
-          )) : <Spinner animation="border" role="status" className="mx-auto" size="xl">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        }
-      </Row>
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={filteredPosts.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      {
+        !posts || posts.length === 0
+        ? postsError ? <h2>{postsError}</h2> : null
+        : <>
+          <Row className="posts my-4 mx-0">
+            {
+              loaded ? currentPosts.map((item, index) => (
+                <Post post={item} key={index} userId={userIdHandle} link={true} error={postsError}/>
+              )) : <Spinner animation="border" role="status" className="mx-auto" size="xl">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            }
+          </Row>
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={filteredPosts.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </>
+      }
     </>
   );
 };
