@@ -12,7 +12,7 @@ export const Search = ({ value }) => {
   }, [valueSearch]);
   
   return (
-    <Form.Group className="my-3 w-50" controlId="formGroupSearch">
+    <Form.Group className="my-3 w-100" controlId="formGroupSearch">
       <Form.Label>Поиск по заголовку поста</Form.Label>
       <Form.Control
         type="search"

@@ -40,7 +40,7 @@ export const User = () => {
           ? userError ? <h2>{userError}</h2> : null
           : loaded
             ? <div className="my-5">
-              <Card style={{width: '32rem'}} className="mb-3 py-2">
+              <Card style={{maxWidth: '32rem'}} className="mb-3 py-2">
                 <Card.Img variant="top" src="/img/photo.svg" width="150px" height="150px"/>
                 <Card.Body className="text-center">
                   <Card.Title>{user.name || 'No name'} {user.username || 'No user name'}</Card.Title>
