@@ -2,7 +2,7 @@ import { SET_USER } from '../Constants';
 
 const initialState = {
   user: [],
-  loaded: false,
+  status: null,
 };
 
 const user = (state = initialState, {type, payload}) => {
@@ -11,7 +11,7 @@ const user = (state = initialState, {type, payload}) => {
       return {
         ...state,
         user: payload,
-        loaded: true,
+        status: 'fulfilled',
       };
     default: return state;
   }

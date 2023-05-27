@@ -2,7 +2,7 @@ import { SET_POSTS } from '../Constants';
 
 const initialState = {
   posts: [],
-  loaded: false,
+  status: null,
 };
 
 const posts = (state = initialState, {type, payload}) => {
@@ -11,7 +11,7 @@ const posts = (state = initialState, {type, payload}) => {
       return {
         ...state,
         posts: [...payload],
-        loaded: true,
+        status: 'fulfilled',
       };
     default: return state;
   }

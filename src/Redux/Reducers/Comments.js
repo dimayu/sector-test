@@ -2,7 +2,7 @@ import { SET_COMMENTS } from '../Constants';
 
 const initialState = {
   comments: [],
-  loaded: false,
+  status: null,
 };
 
 const comments = (state = initialState, {type, payload}) => {
@@ -11,7 +11,7 @@ const comments = (state = initialState, {type, payload}) => {
       return {
         ...state,
         comments: [...payload],
-        loaded: true,
+        status: 'fulfilled',
       };
     default: return state;
   }

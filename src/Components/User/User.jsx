@@ -16,8 +16,9 @@ export const User = () => {
   
   const dispatch = useDispatch();
   const user = useSelector(store => store?.user?.user);
-  const loaded = useSelector(store => store?.user?.loaded);
+  const status = useSelector(store => store?.user?.status);
   const userPosts = useSelector(store => store?.userPosts.userPosts);
+  const statusUserPosts = useSelector(store => store?.userPosts.status);
   const userError = useSelector(store => store?.errors.userError);
   const userPostsError = useSelector(store => store?.errors.userPostsError);
   
@@ -36,10 +37,13 @@ export const User = () => {
         Back
       </Button>
       {
-        !user || user.length === 0
-          ? userError ? <h2>{userError}</h2> : null
-          : loaded
-            ? <div className="my-5">
+        status === null && userError === ''
+          ? <Spinner animation="border" role="status" className="mx-auto d-flex" size="xs">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          : !user || user.length === 0
+            ? userError && <h2>{userError}</h2>
+            : <div className="my-5">
               <Card style={{maxWidth: '32rem'}} className="mb-3 py-2">
                 <Card.Img variant="top" src="/img/photo.svg" width="150px" height="150px"/>
                 <Card.Body className="text-center">
@@ -51,29 +55,27 @@ export const User = () => {
                     phone: <Card.Link href={`tel:${user.phone || ''}`}>{user.phone || 'No phone'}</Card.Link>
                   </Card.Text>
                   <Card.Text>
-                    website: <Card.Link href={`https://${user.website || ''}`} target="_blank">{user.website || 'No website'}</Card.Link>
+                    website: <Card.Link href={`https://${user.website || ''}`}
+                                        target="_blank">{user.website || 'No website'}</Card.Link>
                   </Card.Text>
                 </Card.Body>
               </Card>
               {
-                !userPosts || userPosts.length === 0
-                  ? userPostsError ? <h2>{userPostsError}</h2> : null
-                  : <ListGroup variant="flush">
-                    {
-                      loaded
-                        ? userPosts.map((post) => (
+                statusUserPosts === null && userPostsError === ''
+                  ? <Spinner animation="border" role="status" className="d-block mx-auto" size="sm">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                  : !userPosts || userPosts.length === 0
+                    ? userPostsError ? <h2>{userPostsError}</h2> : null
+                    : <ListGroup variant="flush">
+                      {
+                        userPosts.map((post) => (
                           <Post post={post} key={post.id} link={false}/>
                         ))
-                        : <Spinner animation="border" role="status" className="d-block mx-auto" size="sm">
-                          <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                    }
-                  </ListGroup>
+                      }
+                    </ListGroup>
               }
             </div>
-            : <Spinner animation="border" role="status" className="d-block mx-auto" size="xs">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
       }
     </>
   );

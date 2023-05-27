@@ -12,7 +12,7 @@ export const Post = ({ post, link }) => {
   const [open, setOpen] = useState(false);
   
   const comments = useSelector(store => store?.comments?.comments);
-  const loaded = useSelector(store => store?.comments?.loaded);
+  const status = useSelector(store => store?.comments?.status);
   const commentsError = useSelector(store => store?.errors.commentsError);
   const dispatch = useDispatch();
   
@@ -48,15 +48,15 @@ export const Post = ({ post, link }) => {
       </Button>
       <Collapse in={open} className="mt-4"><ListGroup id="example-collapse-text" variant="flush">
         {
-          !comments || comments.length === 0
-            ? commentsError ? <h2>{commentsError}</h2> : null
-            : loaded
-              ? comments.map((comment) => (
+          status === null && commentsError === ''
+            ? <Spinner animation="border" role="status" className="mx-auto" size="sm">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          : !comments || comments.length === 0
+            ? commentsError && <h2>{commentsError}</h2>
+              : comments.map((comment) => (
                 comment.postId === post.id && <Comment comment={comment} key={comment.id} id={post.id}/>
               ))
-              : <Spinner animation="border" role="status" className="mx-auto" size="sm">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
         }
       </ListGroup>
       </Collapse>

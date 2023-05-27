@@ -9,7 +9,7 @@ import './Posts.scss';
 
 export const Posts = () => {
   const posts = useSelector(store => store?.posts?.posts);
-  const loaded = useSelector(store => store?.posts?.loaded);
+  const status = useSelector(store => store?.posts?.status);
   const postsError = useSelector(store => store?.errors.postsError);
   const dispatch = useDispatch();
   
@@ -60,6 +60,21 @@ export const Posts = () => {
   
   const userIdHandle = (id) => setUserId(id);
   
+  if (status === null && postsError === '') {
+    return (
+      <>
+        <div className="form flex-xs-row d-flex
+      justify-content-center justify-content-xs-between align-items-center align-items-xs-end flex-column">
+          <Search value={searchHandler}/>
+          <Sort value={sortHandler}/>
+        </div>
+        <Spinner animation="border" role="status" className="mx-auto d-block" size="xl">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </>
+    );
+  }
+  
   return (
     <>
       <div className="form flex-xs-row d-flex
@@ -69,24 +84,22 @@ export const Posts = () => {
       </div>
       {
         !posts || posts.length === 0
-        ? postsError ? <h2>{postsError}</h2> : null
-        : <>
-          <Row className="posts my-4 mx-0">
-            {
-              loaded ? currentPosts.map((item, index) => (
-                <Post post={item} key={index} userId={userIdHandle} link={true} error={postsError}/>
-              )) : <Spinner animation="border" role="status" className="mx-auto" size="xl">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            }
-          </Row>
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={filteredPosts.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </>
+          ? postsError ? <h2>{postsError}</h2> : null
+          : <>
+            <Row className="posts my-4 mx-0">
+              {
+                currentPosts.map((item, index) => (
+                  <Post post={item} key={index} userId={userIdHandle} link={true} error={postsError}/>
+                ))
+              }
+            </Row>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={filteredPosts.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </>
       }
     </>
   );
