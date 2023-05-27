@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Container, Navbar, Button, Nav, Collapse } from 'react-bootstrap';
+import { Container, Navbar, Button } from 'react-bootstrap';
+
+import { Menu } from '../../Components/index';
 
 import './Header.scss';
 
@@ -30,21 +32,7 @@ export const Header = () => {
           />
         </Container>
       </Navbar>
-      <Collapse in={open} dimension="width">
-        <Nav className="flex-column align-items-center text-bg-dark p-3" as="ul">
-          <Nav.Item as="li" className="p-2">
-            <img src="/img/user.png" alt="user" width="150px" height="150px"/>
-            <p className="text-center pt-2 m-0">Дамир</p>
-            <a href="mailto:dimayu82@gmail.com" className="link-info">dimayu82@gmail.com</a>
-          </Nav.Item>
-          <Nav.Item as="li" className="p-2">
-            <NavLink to="/" className="link-info">Список постов</NavLink>
-          </Nav.Item>
-          <Nav.Item as="li" className="p-2">
-            <NavLink to="/about" className="link-info">Обо мне</NavLink>
-          </Nav.Item>
-        </Nav>
-      </Collapse>
+      <Menu open={open}/>
     </header>
   );
 };
