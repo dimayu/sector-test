@@ -1,20 +1,18 @@
 {
-  "name": "Mitra Soft",
+  "name": "Sector",
   "version": "0.1.0",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "axios": "^1.4.0",
-    "bootstrap": "^5.2.3",
     "node-sass": "^6.0.0",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "redux-saga": "^1.2.3"
+    "smart-grid": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

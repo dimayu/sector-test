@@ -1,24 +1,40 @@
-import { useState, useEffect } from 'react';
-
-import { Form } from 'react-bootstrap';
+import React, { useState } from 'react';
 
 import './Search.scss';
 
-export const Search = ({ value }) => {
-  const [valueSearch, setValueSearch] = useState('');
+export const Search = (props) => {
+  const {
+    searchPosts
+  } = props;
   
-  useEffect(() => {
-    value(valueSearch);
-  }, [valueSearch]);
+  const [search, setSearch] = useState('');
+  
+  const handleKey = (event) => {
+    if (event.key === 'Enter') {
+      searchPosts(search);
+      setSearch('');
+    }
+  };
   
   return (
-    <Form.Group className="my-3 w-100" controlId="formGroupSearch">
-      <Form.Label>Поиск по заголовку поста</Form.Label>
-      <Form.Control
-        type="search"
-        placeholder="Введите название поста"
-        onChange={(e) => setValueSearch(e.target.value)}
-      />
-    </Form.Group>
+    <div className="wrapper">
+      <div className="search">
+        <input
+          type="text"
+          className="search__input"
+          placeholder="Поиск"
+          name="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleKey}
+        />
+        <button
+          className="search__btn"
+          onClick={() => searchPosts(search, setSearch(''))}
+        >
+          Search
+        </button>
+      </div>
+    </div>
   );
 };
