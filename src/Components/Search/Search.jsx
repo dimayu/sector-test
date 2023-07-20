@@ -32,7 +32,6 @@ export const Search = (props) => {
           className="search__btn"
           onClick={() => searchPosts(search, setSearch(''))}
         >
-          Search
         </button>
       </div>
     </div>

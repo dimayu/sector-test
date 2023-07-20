@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import { Search } from '../index';
+import { Pagination, Search, Table } from '../index';
 
 import './App.scss';
 
@@ -9,6 +9,8 @@ export const App = () => {
     <div className="App">
       <BrowserRouter>
         <Search/>
+        <Table/>
+        <Pagination />
       </BrowserRouter>
     </div>
   );

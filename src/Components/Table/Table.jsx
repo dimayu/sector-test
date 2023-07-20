@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import { TableHeader, TableRow } from '../index';
 
 import './Table.scss';
 
 export const Table = () => {
   return (
-    <div className="table">
+    <div className="wrapper">
+      <div className="table">
+        <TableHeader title="ID" />
+        <TableRow />
+      </div>
     </div>
   );
 };

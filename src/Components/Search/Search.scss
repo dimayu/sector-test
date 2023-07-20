@@ -2,54 +2,43 @@
 @import "src/baseStyles/smart-grid";
 
 .search {
-  height: 40px;
+  max-width: 631px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 32px 0;
-
-  @include md-block() {
-    margin: 12px 0;
-  }
+  margin: 23px 0 15px;
+  padding: 15px 24px 15px 0;
+  background-color: $color-black-2;
+  box-sizing: border-box;
 
   &__input {
     flex-grow: 1;
     height: 100%;
     margin-right: 20px;
-    border: none;
-    border-radius: 8px;
-    padding: 4px 12px;
+    padding: 0 24px;
+    color: #B2B7BF;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 137.687%;
     box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid $color-black-2;
 
     &:focus {
       outline: none;
-      border: 2px solid $color-yellow;
-    }
-
-    @include md-block() {
-      font-size: 16px;
+      border-color: $color-grey;
     }
   }
 
   &__btn {
-    width: 15%;
-    max-width: 200px;
-    height: 100%;
-    background-color: $color-yellow;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 18px;
+    width: 21px;
+    height: 21px;
+    background-image: url('../../../public/img/search.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 
     &:hover {
       opacity: .6;
-    }
-
-    @include md-block() {
-      width: 20%;
-      font-size: 16px;
     }
   }
 }

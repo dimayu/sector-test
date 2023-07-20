@@ -13,29 +13,31 @@ export const Pagination = ({
   }
   
   return (
-    <ul className="pagination my-5 d-flex justify-content-center">
-      {pageNumbers.map(number => {
-        if (currentPage === number) {
+    <nav>
+      <ul className="pagination">
+        {pageNumbers.map(number => {
+          if (currentPage === number) {
+            return (
+              <li key={number} className="pagination__item">
+                <button
+                  onClick={() => paginate(number)}
+                  className="pagination__item__link  pagination__item__link--active btn"
+                >
+                  {number}
+                </button>
+              </li>
+            );
+          }
+          
           return (
-            <li key={number} className="page-item active">
-              <button
-                onClick={() => paginate(number)}
-                className="page-link"
-              >
+            <li key={number} className="pagination__item">
+              <button onClick={() => paginate(number)} className="pagination__item__link btn">
                 {number}
               </button>
             </li>
           );
-        }
-        
-        return (
-          <li key={number} className="page-item">
-            <button onClick={() => paginate(number)} className="page-link">
-              {number}
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+        })}
+      </ul>
+    </nav>
   );
 };

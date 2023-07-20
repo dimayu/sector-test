@@ -1,5 +1,11 @@
+@import "../../baseStyles/reset";
 @import "../../baseStyles/variables";
 @import "../../baseStyles/fonts";
+@import "../../baseStyles/smart-grid";
+
+.wrapper {
+  @include wrapper();
+}
 
 body {
   font-family: $font-family;

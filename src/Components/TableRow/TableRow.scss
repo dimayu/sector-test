@@ -1,2 +1,29 @@
 @import "src/baseStyles/variables";
 @import "src/baseStyles/smart-grid";
+
+.table__row {
+  display: flex;
+  border-bottom: 1px solid $color-grey;
+  border-right: 1px solid $color-grey;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-left: 1px solid $color-grey;
+    box-sizing: border-box;
+
+    &:nth-child(1) {
+      width: 10%;
+      justify-content: center;
+    }
+
+    &:nth-child(2) {
+      width: 50%;
+    }
+
+    &:nth-child(3) {
+      width: 40%;
+    }
+  }
+}
