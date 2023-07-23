@@ -20,7 +20,21 @@
     width: 40%;
   }
 
-  img {
+  &__arrow {
     margin-left: 40px;
+  }
+
+  &--active {
+    .table__header__item__arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include sm-block {
+    padding: 8px;
+
+    &__arrow {
+      margin-left: 8px;
+    }
   }
 }

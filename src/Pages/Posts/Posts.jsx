@@ -2,8 +2,10 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
-import { fetchPosts } from '../Redux/PostsSlice';
-import { Pagination, Search, Table } from '../Components';
+import { fetchPosts } from '../../Redux/PostsSlice';
+import { Pagination, Search, Table } from '../../Components';
+
+import './Posts.scss';
 
 export const Posts = () => {
   const {id} = useParams();
@@ -46,12 +48,14 @@ export const Posts = () => {
   const searchHandler = (value) => setValue(value);
   
   return (
-    (id > limitPost)
-      ? <>
-        <h2 className="error">Не существует такой страницы</h2>
-        <Link to="/posts/1" className="btn">Перейти на страницу постов</Link>
-      </>
-      : <div className="page-home">
+    (id > limitPost || isNaN(id) )
+      ? <div className="not-found">
+        <div className="wrapper">
+          <h1 className="not-found__title">Такой страницы не существует</h1>
+          <Link to="/" className="btn">Перейти на главную</Link>
+        </div>
+      </div>
+      : <div className="page-posts">
         <Search value={searchHandler}/>
         <Table posts={currentPosts}/>
         <Pagination

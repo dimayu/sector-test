@@ -1,9 +1,9 @@
 @import "src/baseStyles/variables";
-@import "src/baseStyles/smart-grid";
 
 
 .table__header {
   width: 100%;
+  min-width: 400px;
   display: flex;
   justify-content: space-between;
   background-color: $color-black-1;

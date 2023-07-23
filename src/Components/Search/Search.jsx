@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './Search.scss';
 
-export const Search = ({ value }) => {
+export const Search = ({value}) => {
   const [valueSearch, setValueSearch] = useState('');
   
   useEffect(() => {

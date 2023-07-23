@@ -2,6 +2,7 @@
 @import "src/baseStyles/smart-grid";
 
 .table__row {
+  min-width: 400px;
   display: flex;
   border-bottom: 1px solid $color-grey;
   border-right: 1px solid $color-grey;
@@ -12,6 +13,10 @@
     padding: 12px 14px;
     border-left: 1px solid $color-grey;
     box-sizing: border-box;
+
+    @include sm-block {
+      padding: 8px;
+    }
 
     &:nth-child(1) {
       width: 10%;

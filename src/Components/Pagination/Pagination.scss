@@ -1,10 +1,20 @@
 @import "../../baseStyles/variables";
+@import "src/baseStyles/smart-grid";
 
 .pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 38px;
+
+  @include sm-block {
+    justify-content: center;
+    padding: 8px;
+
+    &__btn {
+      display: none;
+    }
+  }
 
   &__btn {
     font-size: 24px;

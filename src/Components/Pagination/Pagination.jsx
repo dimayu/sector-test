@@ -32,20 +32,20 @@ export const Pagination = ({
               return (
                 <li key={number} className="pagination__list__item">
                   <Link to={`/posts/${number}`}
-                    onClick={() => dispatch(getPage(number))}
-                    className="pagination__list__item__link  pagination__list__item__link--active"
+                        onClick={() => dispatch(getPage(number))}
+                        className="pagination__list__item__link  pagination__list__item__link--active"
                   >
                     {number}
                   </Link>
                 </li>
               );
             }
-        
+            
             return (
               <li key={number} className="pagination__list__item">
                 <Link to={`/posts/${number}`}
-                  onClick={() => dispatch(getPage(number))}
-                  className="pagination__list__item__link"
+                      onClick={() => dispatch(getPage(number))}
+                      className="pagination__list__item__link"
                 >
                   {number}
                 </Link>

@@ -1,6 +1,6 @@
 @import "src/baseStyles/variables";
-@import "src/baseStyles/smart-grid";
 
 .table {
   width: 100%;
+  overflow-x: auto;
 }

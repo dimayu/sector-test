@@ -1,0 +1,16 @@
+@import "src/baseStyles/variables";
+
+.page-home {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 24px;
+
+  &__title {
+    font-size: 32px;
+    color: $color-green;
+  }
+
+  .btn {
+    margin-top: 24px;
+  }
+}
