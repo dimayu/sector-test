@@ -1,24 +1,17 @@
-import { BrowserRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 
-import { Pagination, Search, Table } from '../index';
+import { Home } from '../../Pages/Home';
+import { Posts } from '../../Pages/Posts';
 
 import './App.scss';
 
 export const App = () => {
-  const { amountPosts, page } = useSelector(state => state.posts);
-  
   return (
     <div className="App">
-      <BrowserRouter>
-        <Search/>
-        <Table/>
-        <Pagination
-          totalPosts={amountPosts}
-          currentPage={page}
-          postsPerPage={10}
-        />
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/posts/:id" element={<Posts/>}/>
+      </Routes>
     </div>
   );
 };

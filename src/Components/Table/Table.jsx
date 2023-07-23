@@ -1,20 +1,11 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { TableHeader, TableRow, Loader } from '../index';
-import { fetchPosts, fetchAllPosts } from '../../Redux/PostsSlice';
 
 import './Table.scss';
 
-export const Table = () => {
-  const {status, error, page} = useSelector(state => state.posts);
-  const posts = useSelector(state => state.posts.posts);
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(fetchAllPosts());
-    dispatch(fetchPosts(page));
-  }, [dispatch, page]);
+export const Table = ({ posts }) => {
+  const {status, error} = useSelector(state => state.posts);
   
   return (
     <div className="wrapper">

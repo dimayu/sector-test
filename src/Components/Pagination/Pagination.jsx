@@ -1,6 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 
 import { getPage, decrement, increment } from '../../Redux/PostsSlice';
+
 import './Pagination.scss';
 
 export const Pagination = ({
@@ -9,6 +11,7 @@ export const Pagination = ({
   currentPage,
 }) => {
   const dispatch = useDispatch();
+  const {page} = useSelector(state => state.posts);
   const pageNumbers = [];
   
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -18,38 +21,43 @@ export const Pagination = ({
   return (
     <div className="wrapper">
       <nav className="pagination">
-        <button
+        <Link
           onClick={() => dispatch(decrement())}
+          to={`/posts/${page}`}
           className="pagination__btn"
-        >Назад</button>
+        >Назад</Link>
         <ul className="pagination__list">
           {pageNumbers.map(number => {
             if (currentPage === number) {
               return (
                 <li key={number} className="pagination__list__item">
-                  <button
-                    onClick={() => dispatch(decrement())}
+                  <Link to={`/posts/${number}`}
+                    onClick={() => dispatch(getPage(number))}
                     className="pagination__list__item__link  pagination__list__item__link--active"
                   >
                     {number}
-                  </button>
+                  </Link>
                 </li>
               );
             }
         
             return (
               <li key={number} className="pagination__list__item">
-                <button onClick={() => dispatch(getPage(number))} className="pagination__list__item__link">
+                <Link to={`/posts/${number}`}
+                  onClick={() => dispatch(getPage(number))}
+                  className="pagination__list__item__link"
+                >
                   {number}
-                </button>
+                </Link>
               </li>
             );
           })}
         </ul>
-        <button
+        <Link
           onClick={() => dispatch(increment())}
+          to={`/posts/${page}`}
           className="pagination__btn"
-        >Далее</button>
+        >Далее</Link>
       </nav>
     </div>
   );

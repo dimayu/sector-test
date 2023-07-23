@@ -2,35 +2,25 @@
 @import "src/baseStyles/smart-grid";
 
 
-.table__header {
-  width: 100%;
+.table__header__item {
   display: flex;
-  justify-content: space-between;
-  background-color: $color-black-1;
-  color: #FFF;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 16px 50px 16px 24px;
+  box-sizing: border-box;
+  cursor: pointer;
 
-  &__item {
-    display: flex;
-    padding: 16px 50px 16px 24px;
-    box-sizing: border-box;
-    cursor: pointer;
+  &:nth-child(1) {
+    width: 10%;
+  }
 
-    &:nth-child(1) {
-      width: 10%;
-    }
+  &:nth-child(2) {
+    width: 50%;
+  }
 
-    &:nth-child(2) {
-      width: 50%;
-    }
+  &:nth-child(3) {
+    width: 40%;
+  }
 
-    &:nth-child(3) {
-      width: 40%;
-    }
-
-    img {
-      margin-left: 40px;
-    }
+  img {
+    margin-left: 40px;
   }
 }

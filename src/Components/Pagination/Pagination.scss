@@ -9,6 +9,11 @@
   &__btn {
     font-size: 24px;
     font-weight: 500;
+    color: $color-black-1;
+
+    &:hover {
+      color: $color-black-2;
+    }
   }
 
   &__list {
@@ -19,9 +24,15 @@
     &__item {
 
       &__link {
+        padding: 0 2px;
         font-size: 18px;
         font-style: italic;
         font-weight: 700;
+        color: $color-black-1;
+
+        &:hover {
+          color: $color-black-2;
+        }
 
         &--active {
           color: $color-green;

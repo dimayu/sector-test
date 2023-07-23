@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './Search.scss';
 
-export const Search = (props) => {
-  const {
-    searchPosts
-  } = props;
+export const Search = ({ value }) => {
+  const [valueSearch, setValueSearch] = useState('');
   
-  const [search, setSearch] = useState('');
-  
-  const handleKey = (event) => {
-    if (event.key === 'Enter') {
-      searchPosts(search);
-      setSearch('');
-    }
-  };
+  useEffect(() => {
+    value(valueSearch);
+  }, [valueSearch]);
   
   return (
     <div className="wrapper">
@@ -24,13 +17,11 @@ export const Search = (props) => {
           className="search__input"
           placeholder="Поиск"
           name="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={handleKey}
+          value={valueSearch}
+          onChange={(e) => setValueSearch(e.target.value)}
         />
         <button
           className="search__btn"
-          onClick={() => searchPosts(search, setSearch(''))}
         >
         </button>
       </div>
